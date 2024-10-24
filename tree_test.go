@@ -84,10 +84,10 @@ func TestTree_Traverse(t *testing.T) {
 	d.AddChildren('C', 'E')
 	g.AddChild('I').AddChild('H')
 	tree.PreorderTraverse(func(t *Tree[rune]) {
-		fmt.Printf("%c ", t.val)
+		fmt.Printf("%c ", t.Val)
 	})
 	fmt.Println()
 	tree.PostorderTraverse(func(t *Tree[rune]) {
-		fmt.Printf("%c ", t.val)
+		fmt.Printf("%c ", t.Val)
 	})
 }

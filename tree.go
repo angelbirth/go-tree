@@ -8,12 +8,12 @@ func NewTree[T comparable]() *Tree[T] {
 
 type Tree[T comparable] struct {
 	children []*Tree[T]
-	val      T
+	Val      T
 	isRoot   bool
 }
 
 func (t *Tree[T]) Search(x T) *Tree[T] {
-	if t.val == x && !t.isRoot {
+	if t.Val == x && !t.isRoot {
 		return t
 	}
 	return t.searchChildren(x)
@@ -21,7 +21,7 @@ func (t *Tree[T]) Search(x T) *Tree[T] {
 
 func (t *Tree[T]) searchChildren(x T) *Tree[T] {
 	for _, child := range t.children {
-		if child.val == x {
+		if child.Val == x {
 			return child
 		} else if c := child.searchChildren(x); c != nil {
 			return c
@@ -32,7 +32,7 @@ func (t *Tree[T]) searchChildren(x T) *Tree[T] {
 
 func (t *Tree[T]) AddChild(x T) *Tree[T] {
 	c := &Tree[T]{
-		val: x,
+		Val: x,
 	}
 	t.children = append(t.children, c)
 	return c
@@ -42,7 +42,7 @@ func (t *Tree[T]) AddChildren(x ...T) []*Tree[T] {
 	var res []*Tree[T]
 	for _, n := range x {
 		c := &Tree[T]{
-			val: n,
+			Val: n,
 		}
 		t.children = append(t.children, c)
 		res = append(res, c)
